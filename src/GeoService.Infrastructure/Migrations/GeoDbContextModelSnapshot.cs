@@ -25,7 +25,6 @@ namespace GeoService.Infrastructure.Migrations
             modelBuilder.Entity("GeoService.Domain.Models.City", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CountryId")
@@ -43,7 +42,7 @@ namespace GeoService.Infrastructure.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("City");
+                    b.ToTable("Cities", (string)null);
                 });
 
             modelBuilder.Entity("GeoService.Domain.Models.Country", b =>
@@ -55,13 +54,19 @@ namespace GeoService.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("DeactivatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities", (string)null);
+                    b.ToTable("Countries", (string)null);
                 });
 
             modelBuilder.Entity("GeoService.Domain.Models.City", b =>

@@ -1,9 +1,9 @@
 ﻿namespace GeoService.Domain.Models;
 
-public class City
+public class City(string name, int population)
 {
-    public Guid Id { get; set; }
-    public required string Name { get; set; }
-    public int Population { get; set; }
-    public required string CountryId { get; set; }
+    public Guid Id { get; private init; } = Guid.NewGuid();
+    public string Name { get; private set; } = name;
+    public int Population { get; init; } = population;
+    public string? CountryId { get; init; }
 }

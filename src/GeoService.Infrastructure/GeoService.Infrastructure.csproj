@@ -13,7 +13,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\GeoService.Application\GeoService.Application.csproj" />
       <ProjectReference Include="..\GeoService.Domain\GeoService.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Persistence\Queries\" />
     </ItemGroup>
 
 </Project>

@@ -12,14 +12,13 @@ public class CountryConfiguration : IEntityTypeConfiguration<Country>
         
         builder.HasKey(c => c.Id);
 
-        builder.Ignore(c => c.Cities);        
-        
-        builder
-            .HasMany<City>("_cities")
+        builder.HasMany(c => c.Cities)
             .WithOne()
             .HasForeignKey(ci => ci.CountryId)
             .IsRequired();
-        
-        builder.Navigation("_cities").UsePropertyAccessMode(PropertyAccessMode.Field);
+
+        builder.Navigation(c => c.Cities)
+            .HasField("_cities")
+            .UsePropertyAccessMode(PropertyAccessMode.Field);
     }
 }

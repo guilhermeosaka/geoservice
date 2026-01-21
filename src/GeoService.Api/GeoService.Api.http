@@ -1,9 +1,53 @@
-POST {{GeoService.HostAddress}}/countries
+POST {{GeoService.HostAddress}}/api/countries
 Content-Type: application/json
 
 {
-  "Country": "Brazil",
-  "Cities": ["São Paulo", "Rio de Janeiro"]
+  "Acronym": "BR",
+  "Name": "Brazil",
+  "Continent": "South America",
+  "Cities": [
+    {
+      "Name": "Sao Paulo",
+      "Population": "11904961"
+    },
+    {
+      "Name": "Rio de Janeiro",
+      "Population": "6730729"
+    }
+  ]
 }
+
+###
+
+GET {{GeoService.HostAddress}}/api/countries/BR
+Accept: application/json
+
+###
+
+GET {{GeoService.HostAddress}}/api/countries/NF
+Accept: application/json
+
+###
+
+PUT {{GeoService.HostAddress}}/api/countries/BR
+Content-Type: application/json
+
+{
+  "Cities": [
+    {
+      "Name": "Marilia",
+      "Population": "247348"
+    },
+    {
+      "Name": "Brasilia",
+      "Population": "2716381"
+    }
+  ]
+}
+
+###
+
+DELETE {{GeoService.HostAddress}}/api/countries/BR
+Content-Type: application/json
 
 ###

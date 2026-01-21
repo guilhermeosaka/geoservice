@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace GeoService.Infrastructure.Persistence.Configurations;
 
-public class CityConfiguration : IEntityTypeConfiguration<Country>
+public class CityConfiguration : IEntityTypeConfiguration<City>
 {
-    public void Configure(EntityTypeBuilder<Country> builder)
+    public void Configure(EntityTypeBuilder<City> builder)
     {
         builder.ToTable("Cities");
         
