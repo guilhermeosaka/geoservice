@@ -1,0 +1,11 @@
+C:\Users\osaka\Projects\Challenges\GeoService\src\GeoService.Domain\bin\Debug\net10.0\GeoService.Domain.deps.json
+C:\Users\osaka\Projects\Challenges\GeoService\src\GeoService.Domain\bin\Debug\net10.0\GeoService.Domain.dll
+C:\Users\osaka\Projects\Challenges\GeoService\src\GeoService.Domain\bin\Debug\net10.0\GeoService.Domain.pdb
+C:\Users\osaka\Projects\Challenges\GeoService\src\GeoService.Domain\obj\Debug\net10.0\GeoService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\osaka\Projects\Challenges\GeoService\src\GeoService.Domain\obj\Debug\net10.0\GeoService.Domain.AssemblyInfoInputs.cache
+C:\Users\osaka\Projects\Challenges\GeoService\src\GeoService.Domain\obj\Debug\net10.0\GeoService.Domain.AssemblyInfo.cs
+C:\Users\osaka\Projects\Challenges\GeoService\src\GeoService.Domain\obj\Debug\net10.0\GeoService.Domain.csproj.CoreCompileInputs.cache
+C:\Users\osaka\Projects\Challenges\GeoService\src\GeoService.Domain\obj\Debug\net10.0\GeoService.Domain.dll
+C:\Users\osaka\Projects\Challenges\GeoService\src\GeoService.Domain\obj\Debug\net10.0\refint\GeoService.Domain.dll
+C:\Users\osaka\Projects\Challenges\GeoService\src\GeoService.Domain\obj\Debug\net10.0\GeoService.Domain.pdb
+C:\Users\osaka\Projects\Challenges\GeoService\src\GeoService.Domain\obj\Debug\net10.0\ref\GeoService.Domain.dll

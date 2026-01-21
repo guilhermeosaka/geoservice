@@ -1,0 +1,9 @@
+POST {{GeoService.HostAddress}}/countries
+Content-Type: application/json
+
+{
+  "Country": "Brazil",
+  "Cities": ["São Paulo", "Rio de Janeiro"]
+}
+
+###
