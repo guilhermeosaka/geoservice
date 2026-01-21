@@ -7,6 +7,7 @@ using GeoService.Application.Interfaces;
 using GeoService.Domain.Interfaces;
 using GeoService.Infrastructure.Persistence;
 using GeoService.Infrastructure.Persistence.Repositories;
+using MapService.Api.Middlewares;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,5 +39,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapControllers();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.Run();

@@ -36,15 +36,8 @@ public class CountriesController : ControllerBase
         [FromServices] IHandler<GetCountryByIdQuery, CountryDto?> handler,
         CancellationToken ct)
     {
-        try
-        {
-            var country = await handler.Handle(new GetCountryByIdQuery(id), ct);
-            return Ok(country);
-        }
-        catch (CountryNotFoundException ex)
-        {
-            return NotFound(ex.Message);
-        }
+        var country = await handler.Handle(new GetCountryByIdQuery(id), ct);
+        return Ok(country);
     }
 
     [HttpPut("{id}")]
@@ -54,15 +47,8 @@ public class CountriesController : ControllerBase
         [FromServices] IHandler<UpdateCountryCommand> handler,
         CancellationToken ct)
     {
-        try
-        {
-            await handler.Handle(new UpdateCountryCommand(id, request.Cities), ct);
-            return Ok();
-        }
-        catch (CountryNotFoundException ex)
-        {
-            return NotFound(ex.Message);
-        }
+        await handler.Handle(new UpdateCountryCommand(id, request.Cities), ct);
+        return Ok();
     }
 
     [HttpDelete("{id}")]
@@ -71,14 +57,7 @@ public class CountriesController : ControllerBase
         [FromServices] IHandler<DeleteCountryCommand> handler,
         CancellationToken ct)
     {
-        try
-        {
-            await handler.Handle(new DeleteCountryCommand(id), ct);
-            return Ok();
-        }
-        catch (CountryNotFoundException ex)
-        {
-            return NotFound(ex.Message);
-        }
+        await handler.Handle(new DeleteCountryCommand(id), ct);
+        return Ok();
     }
 }
