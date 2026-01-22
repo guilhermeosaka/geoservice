@@ -1,4 +1,5 @@
-﻿using GeoService.Application.Interfaces;
+﻿using GeoService.Application.Exceptions;
+using GeoService.Application.Interfaces;
 using GeoService.Domain.Interfaces;
 using GeoService.Domain.Models;
 
@@ -9,6 +10,9 @@ public class CreateCountryHandler(ICountryRepository countryRepository, IUnitOfW
 {
     public async Task Handle(CreateCountryCommand request, CancellationToken ct)
     {
+        if (await countryRepository.ExistsByIdAsync(request.Acronym))
+            throw new CountryAlreadyExistsException(request.Acronym);
+        
         var country = new Country(request.Acronym, request.Name, request.Continent);
         
         foreach (var city in request.Cities)
