@@ -2,7 +2,7 @@
 using GeoService.Application.Interfaces;
 using GeoService.Domain.Interfaces;
 
-namespace GeoService.Application.Countries.UpdateCountry;
+namespace GeoService.Application.Handlers.Countries.UpdateCountry;
 
 public class UpdateCountryHandler(ICountryRepository countryRepository, IUnitOfWork unitOfWork)
     : IHandler<UpdateCountryCommand>

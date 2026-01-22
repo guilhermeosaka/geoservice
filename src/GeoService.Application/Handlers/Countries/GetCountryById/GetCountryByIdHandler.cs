@@ -3,7 +3,7 @@ using GeoService.Application.Exceptions;
 using GeoService.Application.Interfaces;
 using GeoService.Domain.Interfaces;
 
-namespace GeoService.Application.Countries.GetCountryById;
+namespace GeoService.Application.Handlers.Countries.GetCountryById;
 
 public class GetCountryByIdHandler(ICountryRepository countryRepository) : IHandler<GetCountryByIdQuery, CountryDto?>
 {

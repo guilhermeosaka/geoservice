@@ -1,5 +1,30 @@
+### Create token - invalid user key
+
+POST {{GeoService.HostAddress}}/api/tokens
+Content-Type: application/json
+
+{
+  "UserKey": "drinkjuice" 
+}
+
+### Create token - success
+
+POST {{GeoService.HostAddress}}/api/tokens
+Content-Type: application/json
+
+{
+  "UserKey": "drinkwater"
+}
+
+> {%
+    client.global.set("token", response.body.token);
+%}
+
+### Create country - success
+
 POST {{GeoService.HostAddress}}/api/countries
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "Acronym": "BR",
@@ -17,20 +42,23 @@ Content-Type: application/json
   ]
 }
 
-###
+### Get country - success
 
 GET {{GeoService.HostAddress}}/api/countries/BR
 Accept: application/json
+Authorization: Bearer {{token}}
 
-###
+### Get country - country not found
 
 GET {{GeoService.HostAddress}}/api/countries/NF
 Accept: application/json
+Authorization: Bearer {{token}}
 
-###
+### Update country
 
 PUT {{GeoService.HostAddress}}/api/countries/BR
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "Cities": [
@@ -45,9 +73,8 @@ Content-Type: application/json
   ]
 }
 
-###
+### Delete country
 
 DELETE {{GeoService.HostAddress}}/api/countries/BR
 Content-Type: application/json
-
-###
+Authorization: Bearer {{token}}

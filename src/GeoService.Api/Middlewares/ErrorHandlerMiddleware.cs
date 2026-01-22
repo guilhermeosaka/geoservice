@@ -43,6 +43,13 @@ public class ErrorHandlerMiddleware(RequestDelegate next, ILogger<ErrorHandlerMi
                 Status = StatusCodes.Status404NotFound
             },
 
+            InvalidUserKeyException ex => new ProblemDetails
+            {
+                Title = ex.Title,
+                Detail = ex.Message,
+                Status = StatusCodes.Status401Unauthorized
+            },
+
             _ => new ProblemDetails
             {
                 Title = "Unexpected error",

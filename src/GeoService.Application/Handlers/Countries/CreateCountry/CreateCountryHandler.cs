@@ -3,7 +3,7 @@ using GeoService.Application.Interfaces;
 using GeoService.Domain.Interfaces;
 using GeoService.Domain.Models;
 
-namespace GeoService.Application.Countries.CreateCountry;
+namespace GeoService.Application.Handlers.Countries.CreateCountry;
 
 public class CreateCountryHandler(ICountryRepository countryRepository, IUnitOfWork unitOfWork)
     : IHandler<CreateCountryCommand>

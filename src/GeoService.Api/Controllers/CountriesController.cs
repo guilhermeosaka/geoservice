@@ -1,15 +1,17 @@
-﻿using GeoService.Application.Countries.CreateCountry;
-using GeoService.Application.Countries.DeleteCountry;
-using GeoService.Application.Countries.GetCountryById;
-using GeoService.Application.Countries.UpdateCountry;
-using GeoService.Application.Dtos;
+﻿using GeoService.Application.Dtos;
 using GeoService.Application.Exceptions;
+using GeoService.Application.Handlers.Countries.CreateCountry;
+using GeoService.Application.Handlers.Countries.DeleteCountry;
+using GeoService.Application.Handlers.Countries.GetCountryById;
+using GeoService.Application.Handlers.Countries.UpdateCountry;
 using GeoService.Application.Interfaces;
 using MapService.Api.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MapService.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class CountriesController : ControllerBase

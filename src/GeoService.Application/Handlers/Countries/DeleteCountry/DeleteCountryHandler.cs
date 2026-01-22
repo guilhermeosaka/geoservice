@@ -2,7 +2,7 @@
 using GeoService.Application.Interfaces;
 using GeoService.Domain.Interfaces;
 
-namespace GeoService.Application.Countries.DeleteCountry;
+namespace GeoService.Application.Handlers.Countries.DeleteCountry;
 
 public class DeleteCountryHandler(ICountryRepository countryRepository, IUnitOfWork unitOfWork)
     : IHandler<DeleteCountryCommand>
