@@ -1,6 +1,6 @@
 # GeoService
 
-A .NET-based geographical service API with PostgreSQL database support.
+A .NET-based geographical service API with SQL Server database support.
 
 ## Prerequisites
 
@@ -24,13 +24,20 @@ dotnet tool install --global dotnet-ef
 docker compose up -d
 ```
 
-### 3. Create Migration
+### 3. Update Database Schema
 
+```bash
+dotnet ef database update --project .\src\GeoService.Infrastructure --startup-project .\src\GeoService.Api
+```
+
+## Database Migration
+
+### 1. Create Migration
 ```bash
 dotnet ef migrations add MigrationName --project .\src\GeoService.Infrastructure --startup-project .\src\GeoService.Api
 ```
 
-### 4. Update Database Schema
+### 2. Update Database Schema
 
 ```bash
 dotnet ef database update --project .\src\GeoService.Infrastructure --startup-project .\src\GeoService.Api
