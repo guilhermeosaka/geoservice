@@ -2,6 +2,7 @@
 using System.Net.Http.Json;
 using FluentAssertions;
 using GeoService.Application.Dtos;
+using GeoService.Application.Interfaces;
 using GeoService.Infrastructure.Persistence;
 using MapService.Api.Dtos;
 using Microsoft.AspNetCore.Mvc;
@@ -10,9 +11,23 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace GeoService.Api.IntegrationTests.Controllers;
 
-public class CountriesControllerTests(WebAppFactory factory) : IClassFixture<WebAppFactory>
+public class CountriesControllerTests : IClassFixture<WebAppFactory>
 {
-    private readonly HttpClient _client = factory.CreateClient();
+    private readonly WebAppFactory _factory;
+    private readonly HttpClient _client;
+
+    public CountriesControllerTests(WebAppFactory factory)
+    {
+        _factory = factory;
+        _client = factory.CreateClient();
+        
+        using var scope = factory.Services.CreateScope();
+        var tokenGenerator = scope.ServiceProvider.GetRequiredService<ITokenGenerator>();
+        
+        var token = tokenGenerator.Generate("userId", "email@test.com");
+        
+        _client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+    }
 
     #region Create 
     
@@ -74,14 +89,14 @@ public class CountriesControllerTests(WebAppFactory factory) : IClassFixture<Web
 
     private async Task WithDbContextAsync(Func<GeoDbContext, Task> action)
     {
-        using var scope = factory.Services.CreateScope();
+        using var scope = _factory.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<GeoDbContext>();
         await action(db);
     }
     
     private async Task ResetDbAsync()
     {
-        using var scope = factory.Services.CreateScope();
+        using var scope = _factory.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<GeoDbContext>();
 
         await db.Database.EnsureDeletedAsync();
