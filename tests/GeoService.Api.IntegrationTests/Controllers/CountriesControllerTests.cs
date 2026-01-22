@@ -4,6 +4,7 @@ using FluentAssertions;
 using GeoService.Application.Dtos;
 using GeoService.Infrastructure.Persistence;
 using MapService.Api.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -61,17 +62,12 @@ public class CountriesControllerTests(WebAppFactory factory) : IClassFixture<Web
     
         // Assert
         response.StatusCode.Should().Be(HttpStatusCode.Conflict);
-    
-        await WithDbContextAsync(async dbContext =>
-        {
-            var countryDb = await dbContext.Countries.Include(c => c.Cities)
-                .FirstOrDefaultAsync(c => c.Id == request.Acronym);
-    
-            countryDb.Should().NotBeNull();
-            countryDb.Name.Should().Be(request.Name);
-            countryDb.Continent.Should().Be(request.Continent);
-            countryDb.Cities.Should().BeEquivalentTo(request.Cities);
-        });
+        
+        var problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>();
+        problemDetails.Should().NotBeNull();
+        problemDetails.Title.Should().Be("Country already exists");
+        problemDetails.Detail.Should().Be($"Country with acronym '{request.Acronym}' already exists.");
+        problemDetails.Status.Should().Be((int)HttpStatusCode.Conflict);
     }
     
     #endregion Create
