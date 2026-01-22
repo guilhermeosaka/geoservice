@@ -18,7 +18,7 @@ Run the following commands inside the root folder.
 dotnet tool install --global dotnet-ef
 ```
 
-### 2. Start PostgreSQL Database
+### 2. Start SQL Server Database
 
 ```bash
 docker compose up -d
