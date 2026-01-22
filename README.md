@@ -24,10 +24,10 @@ dotnet tool install --global dotnet-ef
 docker compose up -d
 ```
 
-### 3. Create Initial Migration
+### 3. Create Migration
 
 ```bash
-dotnet ef migrations add Initial --project .\src\GeoService.Infrastructure --startup-project .\src\GeoService.Api
+dotnet ef migrations add MigrationName --project .\src\GeoService.Infrastructure --startup-project .\src\GeoService.Api
 ```
 
 ### 4. Update Database Schema
